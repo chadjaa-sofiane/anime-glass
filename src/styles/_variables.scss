@@ -1,0 +1,18 @@
+@mixin boxStyleGlass($width,$edgeColor) {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: $width;
+  }
+  &::before {
+    left: 0;
+    background: linear-gradient(90deg, $edgeColor, transparent);
+  }
+  &::after {
+    right: 0;
+    background: linear-gradient(90deg, transparent, $edgeColor);
+  }
+}
