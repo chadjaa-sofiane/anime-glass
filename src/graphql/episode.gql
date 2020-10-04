@@ -1,0 +1,12 @@
+query episode($title : String!){
+ episode (title : $title){
+   _id
+   title
+   view_id
+   date_released
+  author {
+    _id
+    name
+  }
+ } 
+}

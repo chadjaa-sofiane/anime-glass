@@ -1,0 +1,6 @@
+query episodes($limit : Int!){
+ episodes(_limit : $limit){
+   _id
+   title
+ } 
+}

@@ -1,16 +1,12 @@
 <template>
-  <div>
-   
     <div id="row">
       <div id="row-block">
         <div id="view-image">
-          <img :src="view.url" />
-          <div id="storey">{{ view.title ? view.title : '404' }}</div>
+          <img :src="view.url "/>
         </div>     
-        <h4 class="title-view">{{view.title ? view.title : '404'}}</h4>
       </div>
+      <h4 class="title-view">{{view.title ? view.title : '404'}}</h4>
     </div>
-  </div>
 </template>
 
 <script>
@@ -21,8 +17,9 @@ export default {
       type: Object,
       default: function() {
         return {
-          title: "",
-          name: ""
+          title: "sofiane  king the world",
+          name: "sofiane ",
+          url:"https://banner2.cleanpng.com/20180717/bs/kisspng-vimeo-youtube-logo-video-logo-de-vimeo-5b4e0d5757b1a6.2483298115318418793592.jpg"
         };
       }
     }
@@ -33,23 +30,16 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/main";
 #row {
-  position: relative;
   margin-left: 5px;
-  width: 12em;
-  height: 21em;
   border-radius:5px;
-  @media (max-width:720px){
-    width: 9em;
-    height: 15em;
-  }
 }
 #row-block {
   position: relative;
   width: 100%;
-  height: 100%;
-  border-radius:5px 5px 1px 1px;
+  height: 85%;
   box-sizing: border-box;
-  overflow: hidden;
+  display: inline-block;
+  margin:0px;
   cursor: pointer;
   &:hover {
     #storey {
@@ -61,10 +51,10 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 85%;
+  height: 100%;
   z-index: -1;
   overflow: hidden;
+  border-radius: 5px;
   @include boxStyleGlass(0.3em, rgba(3, 0, 0, 0.3));
   img {
     width: 100%;
@@ -72,28 +62,14 @@ export default {
   }
 }
 .title-view {
-  position: absolute;
-  bottom: -5%;
-  background: rgba(255, 0, 0, 0.5)a(255, 0, 0, 0.644);
   // background: rgba(170, 169, 169,.5);
+  height: 20%;
   text-align: left;
-  padding: 15px;
-  height: 60px;
+  margin:0px;
   width: 100%;
   box-sizing: border-box;
   border-radius: 5px;
   overflow: hidden;
-}
-#storey {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 100%;
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.349);
-  box-sizing: border-box;
-  padding: 10px;
-  transition: 300ms all ease;
-  @include boxStyleGlass(0.3em, rgba(3, 0, 0, 0.3));
+  display: inline-block;
 }
 </style>

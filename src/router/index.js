@@ -5,6 +5,7 @@ import Info from '../components/global/Info.vue'
 import Help from '../components/global/Help.vue'
 import Search from '../components/global/Search.vue'
 import Season from '../components/global/Season.vue'
+import Player from '../components/player.vue'
 
 Vue.use(VueRouter)
 
@@ -33,8 +34,15 @@ Vue.use(VueRouter)
     path: '/season',
     name: 'Season',
     component: Season
+  },
+  {
+    path: '/player/:title',
+    name: 'Player',
+    component: Player,
+    props:true
   }
 ]
+
 
 const router = new VueRouter({
   mode: 'history',

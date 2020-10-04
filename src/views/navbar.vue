@@ -68,7 +68,7 @@ export default {
   transition: 250ms all ease;
   position: fixed;
   top: 0;
-  padding-top: 3em;
+  padding-top: 4em;
   width: 17%;
   background:  #1e2530;
   display: flex;
@@ -162,10 +162,5 @@ export default {
       padding-left: 2.5em;
     }
   }
-}
-@keyframes show-scroll{
-  0%{ background:transparent;}
-  50%{ background: red; }
-  100%{ background: transparent; }
 }
 </style>

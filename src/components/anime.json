@@ -1,0 +1,53 @@
+{
+    "animes": [{
+            "id": 2,
+            "title": "one piece",
+            "url": "https://live.staticflickr.com/6142/5986912410_682fed19e2_z.jpg"
+        },
+        {
+            "id": 3,
+            "title": "kimitsu no yaiba",
+            "url": "https://kawaii-mobile.com/wp-content/uploads/2019/12/Kimetsu-no-Yaiba-2160x1920.jpg"
+        },
+        {
+            "id": 4,
+            "title": "one punch man",
+            "url": "https://fr.web.img3.acsta.net/c_216_288/pictures/17/02/27/17/41/046707.jpg"
+        },
+        {
+            "id": 5,
+            "title": "attack on 3aryan",
+            "url": "https://m.media-amazon.com/images/M/MV5BMTY5ODk1NzUyMl5BMl5BanBnXkFtZTgwMjUyNzEyMTE@._V1_.jpg"
+        },
+        {
+            "id": 6,
+            "title": "fulmetal alchemist brotherhood",
+            "url": "https://fr.web.img6.acsta.net/pictures/19/07/29/15/50/2364027.jpg"
+        },
+        {
+            "id": 7,
+            "title": "dororo",
+            "url": "https://media.senscritique.com/media/000018334735/source_big/Dororo.jpg"
+        },
+        {
+            "id": 8,
+            "title": "jojo bizzare adventure",
+            "url": "https://i.pinimg.com/originals/9e/19/49/9e1949f1e3b8b668ba0d7feea595eb30.jpg"
+        },
+        {
+            "id": 9,
+            "title": "high school dxd",
+            "url": "https://pictures.betaseries.com/fonds/poster/254653.jpg"
+        },
+        {
+            "id": 10,
+            "title": "neon genesis evangelion",
+            "url": "https://image.posterlounge.fr/images/l/1886728.jpg"
+        },
+        {
+            "id": 11,
+            "title": "Death note",
+            "url": "https://fr.web.img5.acsta.net/pictures/18/01/18/14/35/2024405.jpg"
+        }
+    ]
+}

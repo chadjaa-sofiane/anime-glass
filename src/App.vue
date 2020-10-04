@@ -6,7 +6,9 @@
       <Navapp />
     </div>
     <section @click="closeNav">
-      <router-view />
+      <transition name="view">
+        <router-view />
+      </transition>
     </section>
   </div>
 </template>
@@ -25,13 +27,16 @@ export default {
   methods: {
     ...mapActions(["closeNav", "updateSrollTop"]),
     ...mapMutations(['UPDATE_SCROLL_TOP'])
+  },watch: {
+    '$route': (to,from)=>{
+       console.log(`route : ${to} %c, previuse : ${from}`,'color:blue');
+    }
   }
-};
-console.log(document.scrollY);
+}
 </script>
 <style lang="scss">
-//i make this div buy fix problem the relative zindex 
 
+//i make this div buy fix problem the relative zindex 
 .divs_fixed{
   position: absolute;
   top: 0;
@@ -59,7 +64,20 @@ console.log(document.scrollY);
 section {
   padding: 0 5px;
   min-height: 100%;
-  padding-top: 5em;
+}
+.view-enter-active,.view-leave-active{
+  transition: opacity 150ms  ,transform 150ms ;
+}
+.view-enter-active{
+  transition-delay: 200ms;
+}
+.view-enter,.view-leave-to{
+  opacity: 0;
+  transform: scale(.8);
+}
+.view-enter-to,.view-leave{
+  opacity: 1;
+  transform: scale(1);
 }
 /* width */
 ::-webkit-scrollbar {
@@ -77,5 +95,11 @@ section {
 }
 ::-webkit-scrollbar-corner {
   display: none;
+}
+
+#app{
+  @media all and (max-width: 720px){
+    font-size:0.8em;
+  }
 }
 </style>

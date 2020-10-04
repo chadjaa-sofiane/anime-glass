@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div id="description">
+       <img class="desc-image" src="#" alt="fuck you">
+       <p>
+          this is description
+       </p>
+    </div>
     <div id="Home">
       <!-- <list :views="views" title="here is title the list"/> -->
       <ul id="HomeNav">
@@ -9,7 +15,7 @@
       </ul>
 
       <br />
-      <list :views="anime" title="Recent uploads" />
+      <list :views="animes" title="Recent uploads" />
       <br />
       <br />
       <br />
@@ -51,9 +57,10 @@
 
 <script>
 // @ is an alias to /src
-import List from "../ListView.vue";
-import { mapActions } from "vuex";
+import List from "../ListView.vue"
+import { mapActions } from "vuex"
 import row from '../row.vue'
+import {animes} from '../anime.json'
 export default {
   name: "Home",
   components: {
@@ -65,49 +72,7 @@ export default {
   },
   data() {
     return {
-      anime: [
-        {
-          id: 2,
-          title: "one piece",
-          url: "https://live.staticflickr.com/6142/5986912410_682fed19e2_z.jpg"
-        },
-        {
-          id: 3,
-          title: "kimitsu no yaiba",
-          url:
-            "https://www.nautiljon.com/images/anime/00/87/mini/kimetsu_no_yaiba_7878.jpg?11592942516"
-        },
-        {
-          id: 4,
-          title: "one punch man",
-          url:
-            "https://fr.web.img3.acsta.net/c_216_288/pictures/17/02/27/17/41/046707.jpg"
-        },
-        {
-          id: 5,
-          title: "attack on 3aryan",
-          url:
-            "https://m.media-amazon.com/images/M/MV5BMTY5ODk1NzUyMl5BMl5BanBnXkFtZTgwMjUyNzEyMTE@._V1_.jpg"
-        },
-        {
-          id: 6,
-          title: "fulmetal alchemist brotherhood",
-          url:
-            "https://fr.web.img6.acsta.net/pictures/19/07/29/15/50/2364027.jpg"
-        },
-        {
-          id: 7,
-          title: "dororo",
-          url:
-            "https://media.senscritique.com/media/000018334735/source_big/Dororo.jpg"
-        },
-        {
-          id: 8,
-          title: "jojo bizzare adventure",
-          url:
-            "https://i.pinimg.com/originals/9e/19/49/9e1949f1e3b8b668ba0d7feea595eb30.jpg"
-        }
-      ]
+      animes
     };
   },
   computed: {
@@ -121,14 +86,39 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+#description{
+  position: relative;
+  padding: 5em 30px 0 30px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 300px;
+  font-size: 2em;
+  text-align: center;
+  &::after{
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    background: linear-gradient(180deg,transparent,#272c38);
+  }
+  .desc-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+    z-index: -1;
+  }
+}
 #Home {
-  border: 1px solid rgba(255, 255, 255, 0.7);
   height: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 20px 5px;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 #HomeNav {
   display: flex;
@@ -144,12 +134,12 @@ export default {
   li {
     padding: 5px 10px;
     border: 1px solid #fff;
-    border-radius: 15px;
+    border-radius: 5px;
     cursor: pointer;
     &:hover {
       background: yellowgreen;
+      border: 1px solid #272c38;
       color: black;
-      border: none;
     }
   }
   @media(max-width:720px){

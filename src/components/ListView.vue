@@ -1,48 +1,76 @@
 <template>
   <div id="List">
-    <span id="All">All</span>
-    <h1 id="List-title"> {{ title }} </h1>
-    <div id="List-view">
-      <row
-        v-for="view in views" 
-        :key="view.id" 
-        :view="view" 
-      />
-      
+    <div id="head-block">
+      <h1 id="List-title">{{ title }}</h1>
+      <div id="arrows">
+        <span v-show="getLeft != 0" @click="goLeft()" class="fas fa-long-arrow-alt-left"></span>
+        <span @click="goRight()" class="fas fa-long-arrow-alt-right"></span>
+      </div>
+      <div id="All">All</div>
     </div>
-    <span class="fas fa-chevron-circle-left"></span>
-    <span class="fas fa-chevron-circle-right"></span>
+    <div @scroll="scrolLeft" id="List-view">
+       <div v-for="view in views" :key="view.id"> 
+         <row class="row" :view="view" />
+       </div> 
+    </div>
+    {{ getLeft }} 
   </div>
 </template>
 
 <script>
-import row from "./row.vue"
+import row from "./row.vue";
 
 export default {
   name: "List",
-  props:{
-    views:{
-      type:Array,
-      default:()=>[]
-    },
-    title:{
-      type:String,
-      default:''
+  data () {
+    return {
+      left:0
     }
   },
+  props: {
+    views: {
+      type: Array,
+      default: () => [],
+    },
+    title: {
+      type: String,
+      default: "",
+    },
+  },
   components: {
-    row
+    row,
+  },
+  methods: {
+    scrolLeft(){
+      this.left = document.getElementById('List-view').scrollLeft
+    },
+    goLeft(){
+      document.getElementById('List-view').scrollLeft -= 600
+    },
+    goRight(){
+      document.getElementById('List-view').scrollLeft += 600
+    }
   }
-    // scrollY(){
-    //   return document.getElementById('#List-view').scrollLeft
-    // }
-    //  },
-  
-}
+  ,
+  computed: {
+  getLeft(){
+      return this.left; 
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 @import "@/styles/main";
+.row{
+  position: relative;
+  width: 200px;
+  height: 350px;
+  @media (max-width:720px){
+    width: 160px;
+    height: 280px;
+  }
+}
 #List {
   margin: auto;
   width: 100%;
@@ -51,43 +79,20 @@ export default {
   padding: 5px;
   box-sizing: border-box;
   border-radius: 4px;
-  &:hover{
-    .fa-chevron-circle-left,.fa-chevron-circle-right{
-      transition: 300ms all ease;
-      opacity: 1;
-    }
-  }
-  #List-title{
-    position: absolute;
-    top: -20%;
-    left: 0;
-    font-size: 2em;
-    padding: 0 15px;
-    font-weight: bold;
-    border-radius: 2px 2px 0 0;
-  }
-  .fa-chevron-circle-left,.fa-chevron-circle-right{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
-    color: rgba(173, 173, 173, 0.8);
-    font-size: 4em;
-    text-shadow:1px 1px 1px rgba(0, 0, 0, 0.3); 
-    &:hover{
-      transition: 100ms all ease;
-      font-size: 5em;
-      color: #FFF;
-      text-shadow:1px 1px 1px rgba(0, 0, 0, 0.3); 
-    }
-  }
-  .fa-chevron-circle-left{
-    left:0;
-  }
-  .fa-chevron-circle-right{
-    right: 0;
-  }
+  background: rgba($color: #FFF, $alpha: .03);
 }
+  #head-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 1em;
+    width: 100%;
+    margin: auto;
+    @media all and (max-width: 720px){
+      font-size:.8rem;
+    }
+  }
 #List-view {
   box-sizing: border-box;
   border-radius: 10px;
@@ -96,25 +101,57 @@ export default {
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
- &::-webkit-scrollbar{
-   display: none;
- }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  scroll-behavior:smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
-#All{
-  position: absolute;
-  right: 15px;
-  top: -10%;
-  padding:5px 15px;
-  color: #FFF;
-  border:1px solid #FFF;
-  border-radius: 10px;
+#List-title{
+  font-size: 1em;
+}
+#arrows{
+  position: relative;
+  height: 100%;
+  width: 150px;
+  @media (max-width:720px){
+    width: 100px;
+  }
+  .fa-long-arrow-alt-right,.fa-long-arrow-alt-right{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .fa-long-arrow-alt-right{
+    right: 0;
+  }
+  span{
+    font-size: 2em;
+    border: 1px solid #FFF;
+    border-radius:5px;
+    padding:0 10px;
+    cursor: pointer;
+    &:hover{
+      background: yellowgreen;
+      border: 1px solid #272c38;
+    }
+  }
+}
+#All {
+  padding: 5px 15px;
+  width: 25px;
+  height: 50%;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
   font-weight: bold;
-  font-size: 1.3em;
   cursor: pointer;
   &:hover {
-      background: yellowgreen;
-      color: black;
-      border: none;
-    }
+    background: yellowgreen;
+    color: black;
+    border: 1px solid #272c38;
+  }
 }
+
 </style>
